@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block header %}
+  <h1>{% block title %}Add Item{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post" action="/add_items">
+    <label>Item Name: </label>
+    <input id ="itemname" name="itemname" type="text"><br>
+    <label>Quantity: </label>
+    <input id ="itemqty" name="itemqty" type="number"><br>
+    <label>Item Type: </label>
+    <input id ="itemtype" name="itemtype" type="text"><br>
+    <label>Price:</label><br>
+    <input id ="price" type="number" name="price">
+    <label>Description: </label>
+    <input id ="description" name="description" type="textarea"><br>
+    <input type="submit" value="Submit"/>
+  </form>
+{% endblock %}
