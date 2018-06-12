@@ -1,0 +1,16 @@
+{% extends 'db/index.html' %}
+{% block content %}
+
+<h3>Name: {{ employee.name }}</h3>
+<h4>Date of Joining: {{ employee.doj }}</h4>
+<h4>Active: {{ employee.active }}</h4>
+{% if error_message %}
+	<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+<form action="{% url 'db:status' employee.id %}" method="post">
+	{% csrf_token %}
+	{{form.as_p}}
+    <input type="submit" value="Change">
+</form>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'db/index.html' %}
+{% block content %}
+<h1>Add Item</h1>
+{% if error_message %}
+	<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+<form action="/db/additem/" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+  <input type="submit" value="Add">
+</form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'db/index.html' %}
+{% block content %}
+
+{% if all_employees %}	
+	<h3>List of Employees</h3>
+	<ul>
+		{% for employee in all_employees %}
+		<li><a href="/db/employees/{{ employee.id }}">{{ employee.name }}</a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<h3>No Employees!</h3>
+{% endif %}
+
+{% endblock %}

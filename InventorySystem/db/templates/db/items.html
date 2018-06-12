@@ -1,0 +1,16 @@
+{% extends 'db/index.html' %}
+{% block content %}
+
+{% if all_items %}	
+	<h3>List of Items</h3>
+	<ul>
+		{% for item in all_items %}
+		<li><a href="/db/items/{{ item.id }}">{{ item.name }}</a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+	<h3>No Items!</h3>
+{% endif %}
+<br>
+
+{% endblock %}

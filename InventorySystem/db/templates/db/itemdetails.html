@@ -1,0 +1,23 @@
+{% extends 'db/index.html' %}
+{% block content %}
+
+<h3>{{ item.name }}</h3>
+<ul style="list-style-type:none;">
+	<li>Quantity: {{ item.quantity }}</li>
+	<li>Type: {{ item.type }}</li>
+	<li>Price: Rs {{ item.price }}</li>
+	<li>Description: {{ item.description }}</li>
+	<li>Assigned To: </li>
+	{% if item.itemassignment_set.all %}
+	<ul>
+		<li>Name  Quanity  From  To</li>
+		{% for emp in item.itemassignment_set.all %}
+		<li><a href="/db/employees/{{ emp.emp_id.id }}">{{emp.emp_id}}</a>  {{ emp.quantity }}  {{ emp.from_date }}  {{ emp.to_date }}</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+	<p>None</p>
+	{% endif %}
+</ul>
+
+{% endblock %}

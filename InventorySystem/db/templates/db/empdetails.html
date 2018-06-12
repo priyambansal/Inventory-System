@@ -1,0 +1,19 @@
+{% extends 'db/index.html' %}
+{% block content %}
+
+<h3>Name: {{ employee.name }}</h3>
+<h4>Date of Joining: {{ employee.doj }}</h4>
+<h4>Active: {{ employee.active }}</h4>
+{% if employee.active ==  "N" %}
+	<h4>{{ employee.doe }}</h4>
+{% else %}
+<ul style="list-style-type:none;">
+	<li><pre>NAME  QTY  FROM  	TO</pre></li>
+	{% for asgnmnt in employee.itemassignment_set.all %}
+		<li><pre><a href="/db/items/{{ asgnmnt.item_id.id }}">{{ asgnmnt.item_id }}</a>  {{ asgnmnt.quantity }}  {{ asgnmnt.from_date }}  {{ asgnmnt.to_date }}</pre></li>
+	{% endfor %}
+{% endif %}
+</ul>
+<a href="/db/employees">All Employees</a>
+<a href="{% url 'db:status' employee.id%}">Change Status</a>
+{% endblock %}
